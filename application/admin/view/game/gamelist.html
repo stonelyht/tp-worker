@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_jqgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:02 GMT -->
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+    <title>游戏列表</title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="__CSS_PATH__bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="__CSS_PATH__font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+
+    <!-- jqgrid-->
+    <link href="__CSS_PATH__plugins/jqgrid/ui.jqgridffe4.css?0820" rel="stylesheet">
+
+    <link href="__CSS_PATH__animate.min.css" rel="stylesheet">
+    <link href="__CSS_PATH__style.min862f.css?v=4.1.0" rel="stylesheet">
+
+    <style>
+        /* Additional style to fix warning dialog position */
+
+        #alertmod_table_list_2 {
+            top: 900px !important;
+        }
+    </style>
+
+</head>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox ">
+                    <div class="ibox-content">
+                        <div class="jqGrid_wrapper">
+                            <table id="table_list_2"></table>
+                            <div id="pager_list_2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="modal-form" class="modal fade" aria-hidden="true">
+        <div class="col-sm-6">
+            <div class="ibox float-e-margins">
+                <div class="ibox-title">
+                    <h5>添加游戏</h5>
+                    <div class="ibox-tools">
+                        <a class="collapse-link">
+                            <i class="fa fa-chevron-up"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="ibox-content">
+                    <form class="form-horizontal m-t" id="signupForm" action="{:url('admin/game_ctr/addgame')}">
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">游戏名：</label>
+                            <div class="col-sm-8">
+                                <input id="username" name="name" class="form-control" type="text" aria-required="true" aria-invalid="true" class="error">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">备注：</label>
+                            <div class="col-sm-8">
+                                <input id="lastname" name="remark" class="form-control" type="text" aria-required="true" aria-invalid="false" class="valid">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label">状态：</label>
+                            <div>
+                                <select name="status">
+                                    <option value="1">正常</option>
+                                    <option value="2">禁用</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-offset-3">
+                                <button class="btn btn-primary" type="button" onclick="validate(this)">保存</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="__JS_PATH__jquery.min.js?v=2.1.4"></script>
+    <script src="__JS_PATH__bootstrap.min.js?v=3.3.6"></script>
+    <script src="__JS_PATH__plugins/peity/jquery.peity.min.js"></script>
+    <script src="__JS_PATH__plugins/jqgrid/i18n/grid.locale-cnffe4.js?0820"></script>
+    <script src="__JS_PATH__plugins/jqgrid/jquery.jqGrid.minffe4.js?0820"></script>
+    <script src="__JS_PATH__content.min.js?v=1.0.0"></script>
+    <script src="__JS_PATH__plugins/validate/jquery.validate.min.js"></script>
+    <script src="__JS_PATH__plugins/validate/messages_zh.min.js"></script>
+    <script src="__JS_PATH__demo/form-validate-demo.min.js"></script>
+    <script src="__JS_PATH__plugins/iCheck/icheck.min.js"></script>
+    <script src="__JS_PATH__plugins/layer/layer.min.js"></script>
+    <script>
+        $(document).ready(function(){$.jgrid.defaults.styleUI="Bootstrap";
+
+        var mydata={$list};
+       $("#table_list_2").jqGrid({
+           data:mydata,
+           datatype:"local",
+           height:450,
+           autowidth:true,
+           shrinkToFit:true,
+           rowNum:20,
+           rowList:[10,20,30],
+           colNames:["游戏ID","游戏名","状态","备注","操作"],
+           colModel:[{
+               name:"id",
+               index:"id",
+               editable:true,
+               width:60,
+               sorttype:"int",
+               search:true
+           },
+               {
+                   name:"name",
+                   index:"name",
+                   editable:true,
+                   width:100
+               },
+               {
+                   name:"status",
+                   index:"status",
+                   editable:true,
+                   width:80
+               },
+               {
+                   name:"remark",
+                   index:"remark",
+                   editable:true,
+                   width:80
+               },
+               {
+                   name:"action",
+                   index:"action",
+                   editable:true,
+                   width:100,
+                   sortable:false
+               }],
+           pager:"#pager_list_2",
+           viewrecords:true,
+           caption:"游戏列表"+"&nbsp;"+"&nbsp;"+"&nbsp;"+"<a href='userlist.html#modal-form' data-toggle=\"modal\" class=\"btn btn-primary\">添加</a>",
+           add:true,
+           edit:true,
+           addtext:"Add",
+           edittext:"Edit",
+           hidegrid:false}
+           );
+       $("#table_list_2").setSelection(4,true);
+       $("#table_list_2").jqGrid("navGrid","#pager_list_2",{
+           edit:false,
+           add:false,
+           del:false,
+           search:true
+       },
+           {height:200,reloadAfterSubmit:true});
+       $(window).bind("resize",function(){
+           var width=$(".jqGrid_wrapper").width();
+           // $("#table_list_1").setGridWidth(width);
+           $("#table_list_2").setGridWidth(width)})});
+    </script>
+
+    <script>
+        function status(e) {
+            var gid = e.getAttribute('id');
+            var status1 = e.parentNode.previousSibling.previousSibling.innerHTML;
+            $.ajax({
+                url:"{:url('admin/game_ctr/status')}",
+                type:"post",
+                dataType:"json",
+                data:{id:gid,status:status1},
+                success:function (data) {
+                    var res =  JSON.parse(data);
+                    var status = res[0].status;
+                    e.parentNode.previousSibling.previousSibling.innerHTML= status=='disable'?'禁用':'正常';
+                    e.innerHTML=status=='disable'?'开启':'禁用';
+                    layer.msg('操作成功！');
+                }
+            });
+        }
+
+        function dele(e) {
+            var gid = e.getAttribute('id');
+            layer.confirm('你确定要删除吗？', {
+                btn: ['确定','取消'] //按钮
+            }, function(){
+                $.ajax({
+                    url:"{:url('admin/game_ctr/deletegame')}",
+                    type:"post",
+                    dataType:"json",
+                    data:{id:gid},
+                    success:function (data) {
+                        var res =  JSON.parse(data);
+                        // console.log(res);
+                        if(res){
+                            layer.msg('删除成功');
+                            e.parentNode.parentNode.remove();
+                        }
+                    }
+                });
+            }, function(){
+            });
+        }
+
+        function validate(e) {
+            var name = document.getElementById('username').value;
+            if(name==''){
+                layer.msg('游戏名不能为空');
+            }else {
+                e.setAttribute('type','submit');
+            }
+
+        }
+    </script>
+
+    <script type="text/javascript" src="http://tajs.qq.com/stats?sId=9051096" charset="UTF-8"></script>
+
+</body>
+
+
+<!-- Mirrored from www.zi-han.net/theme/hplus/table_jqgrid.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 20 Jan 2016 14:20:02 GMT -->
+</html>
