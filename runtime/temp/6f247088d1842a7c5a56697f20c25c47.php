@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:68:"E:\work\tp-worker\public/../application/admin\view\index\iframe.html";i:1535430610;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -13,11 +14,11 @@
 
     <title>H+ 后台主题UI框架 - 主页示例</title>
 
-    <link rel="shortcut icon" href="favicon.ico"> <link href="__CSS_PATH__bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
-    <link href="__CSS_PATH__font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
+    <link rel="shortcut icon" href="favicon.ico"> <link href="/static/css/bootstrap.min14ed.css?v=3.3.6" rel="stylesheet">
+    <link href="/static/css/font-awesome.min93e3.css?v=4.4.0" rel="stylesheet">
 
-    <link href="__CSS_PATH__animate.min.css" rel="stylesheet">
-    <link href="__CSS_PATH__style.min862f.css?v=4.1.0" rel="stylesheet">
+    <link href="/static/css/animate.min.css" rel="stylesheet">
+    <link href="/static/css/style.min862f.css?v=4.1.0" rel="stylesheet">
 
 
 </head>
@@ -39,7 +40,7 @@
         <small>移动设备访问请扫描以下二维码：</small>
         <br>
         <br>
-        <img src="__IMG_PATH__qr_code.png" width="100%" style="max-width:264px;">
+        <img src="/static/img/qr_code.png" width="100%" style="max-width:264px;">
         <br>
     </div>
     <div class="col-sm-5">
@@ -507,7 +508,7 @@
                         <br>如果图片太小，可以点击图片放大。
                     </div>
                     <p id="pay-qrcode">
-                        <a href="javascript:;"><img src="__IMG_PATH__pay.png" width="100%" alt="请使用手机支付宝或者微信扫码支付">
+                        <a href="javascript:;"><img src="/static/img/pay.png" width="100%" alt="请使用手机支付宝或者微信扫码支付">
                         </a>
                     </p>
 
@@ -611,11 +612,11 @@
         </div>
     </div>
 </script>
-<script src="__JS_PATH__jquery.min.js?v=2.1.4"></script>
-<script src="__JS_PATH__bootstrap.min.js?v=3.3.6"></script>
-<script src="__JS_PATH__plugins/layer/layer.min.js"></script>
-<script src="__JS_PATH__content.min.js"></script>
-<script src="__JS_PATH__welcome.min.js"></script>
+<script src="/static/js/jquery.min.js?v=2.1.4"></script>
+<script src="/static/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/static/js/plugins/layer/layer.min.js"></script>
+<script src="/static/js/content.min.js"></script>
+<script src="/static/js/welcome.min.js"></script>
 </body>
 
 
